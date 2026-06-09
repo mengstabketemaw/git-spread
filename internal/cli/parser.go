@@ -12,6 +12,7 @@ func Parser()(config.Config, error) {
 	start := flag.String("start", "", "start date")
 	end := flag.String("end", "", "end date")
 	dryRun := flag.Bool("dry-run", false, "dry run")
+	skipWeekends := flag.Bool("skip-weekends", false, "skip weekends")
 
 	flag.Parse()
 
@@ -35,6 +36,7 @@ func Parser()(config.Config, error) {
 		StartDate: startDate,
 		EndDate: endDate,
 		DryRun: *dryRun,
+		SkipWeekends: *skipWeekends,
 	}
 
 	return cfg, nil

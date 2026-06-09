@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/mengstabketemaw/git-spread/internal/cli"
+	"github.com/mengstabketemaw/git-spread/internal/git"
 )
 
 func main(){
@@ -15,4 +17,7 @@ func main(){
 	}
 
 	fmt.Print(cfg)
+
+	git.ReadCommits()
+	
 }

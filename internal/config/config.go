@@ -7,4 +7,5 @@ type Config struct {
 	EndDate time.Time
 
 	DryRun bool
+	SkipWeekends bool
 }
