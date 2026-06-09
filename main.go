@@ -5,9 +5,10 @@ import (
 
 	"github.com/mengstabketemaw/git-spread/internal/cli"
 	"github.com/mengstabketemaw/git-spread/internal/git"
+	"github.com/mengstabketemaw/git-spread/internal/scheduler"
 )
 
-func main(){
+func main() {
 
 	cfg, err := cli.Parser()
 
@@ -16,10 +17,24 @@ func main(){
 		return
 	}
 
-	fmt.Print(cfg)
-
 	commits, err := git.ReadCommits()
 
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	scheduled, err := scheduler.Schedule(commits, cfg)
+
+	if err != nil {
+		fmt.Print(err)
+	}
+
+	if cfg.DryRun {
+		fmt.Printf("%-10s %-15s %-15s\n", "Hash", "Old", "New")
+		for i := range scheduled {
+			fmt.Printf("%-10s %-15s %-15s\n", scheduled[i].Hash, commits[i].Date, scheduled[i].Date)
+		}
+	}
 	fmt.Println(commits, err)
-	
+
 }
