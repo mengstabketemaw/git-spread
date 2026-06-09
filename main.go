@@ -18,6 +18,8 @@ func main(){
 
 	fmt.Print(cfg)
 
-	git.ReadCommits()
+	commits, err := git.ReadCommits()
+
+	fmt.Println(commits, err)
 	
 }
