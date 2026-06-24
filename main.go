@@ -14,6 +14,7 @@ func main() {
 	cfg, err := cli.Parser()
 
 	if err != nil {
+		x := 1
 		fmt.Println(err)
 		return
 	}
