@@ -5,6 +5,7 @@ import (
 
 	"github.com/mengstabketemaw/git-spread/internal/cli"
 	"github.com/mengstabketemaw/git-spread/internal/git"
+	"github.com/mengstabketemaw/git-spread/internal/rewrite"
 	"github.com/mengstabketemaw/git-spread/internal/scheduler"
 )
 
@@ -36,5 +37,7 @@ func main() {
 		}
 	}
 	fmt.Println(commits, err)
+
+	rewrite.Test()
 
 }
